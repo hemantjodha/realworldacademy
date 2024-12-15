@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-World Academy</title>
+    <style>
+        /* Background and font colors inspired by the provided theme */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff; /* Set background to white */
+            color: #333333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 900px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .logo {
+            max-height: 60px; /* Adjust logo size */
+            margin: 20px 0;
+        }
+        .buttons {
+            margin: 20px 0;
+        }
+        .button {
+            color: #ffffff;
+            background-color: #316A8F;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin: 0 10px;
+            border: none;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #275b73;
+        }
+        .content-image {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 20px auto;
+        }
+    </style>
+    <script>
+        // JavaScript function to display the appropriate section based on button clicks
+        function showSection(section) {
+            // Hide all sections
+            document.getElementById("home-section").style.display = 'none';
+            document.getElementById("about-section").style.display = 'none';
+            document.getElementById("offerings-section").style.display = 'none';
+            document.getElementById("program-outline-section").style.display = 'none';
+            document.getElementById("ai-week-agenda-section").style.display = 'none';
+            
+            // Show selected section
+            document.getElementById(section).style.display = 'block';
+        }
+
+        // Show "Offerings_4" slide by default on load as the home page
+        window.onload = function() {
+            showSection('home-section');
+        };
+    </script>
+</head>
+<body>
+    <div class="container">
+        <!-- Centered logo that links to the home page (Offerings_4) -->
+        <a href="#" onclick="showSection('home-section')">
+            <img src="RWA_logo.jpg" alt="Company Logo" class="logo">
+        </a>
+
+        <!-- Buttons to toggle sections -->
+        <div class="buttons">
+            <button class="button" onclick="showSection('about-section')">About Us</button>
+            <button class="button" onclick="showSection('offerings-section')">Offerings</button>
+            <button class="button" onclick="showSection('program-outline-section')">Program Outline</button>
+            <button class="button" onclick="showSection('ai-week-agenda-section')">AI Week Agenda</button>
+        </div>
+
+        <!-- Home section (Offerings_4), shown by default as the home page -->
+        <div id="home-section" style="display: none;">
+            <img src="Offerings_4.JPG" alt="Home Slide (Offerings_4)" class="content-image">
+        </div>
+
+        <!-- About Us section, hidden by default -->
+        <div id="about-section" style="display: none;">
+            <img src="About_Us.jpg" alt="About Us Slide" class="content-image">
+        </div>
+
+        <!-- Offerings section, hidden by default, showing Offerings_1 image -->
+        <div id="offerings-section" style="display: none;">
+            <img src="Offerings_1.JPG" alt="Offerings Slide 1" class="content-image">
+        </div>
+
+        <!-- Program Outline section, hidden by default, showing Offerings_2 image -->
+        <div id="program-outline-section" style="display: none;">
+            <img src="Offerings_2.JPG" alt="Program Outline Slide" class="content-image">
+        </div>
+
+        <!-- AI Week Agenda section, hidden by default, showing Offerings_3 image -->
+        <div id="ai-week-agenda-section" style="display: none;">
+            <img src="Offerings_3.JPG" alt="AI Week Agenda Slide" class="content-image">
+        </div>
+    </div>
+</body>
+</html>
