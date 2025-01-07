@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real World Academy</title>
+    <style>
+        /* General color scheme based on company presentation */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgb(62, 63, 76); /* Updated background color */
+            color: #ffffff; /* White text color */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            width: 90%; /* Responsive width for smaller screens */
+            max-width: 900px;
+            background-color: #ffffff;
+            color: #333333;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column; /* Stack content vertically */
+        }
+        .logo {
+            max-height: 60px;
+            margin: 20px;
+        }
+        .content-section {
+            padding: 20px 0;
+        }
+        .contact-info {
+            background-color: #E2E8EF; /* Light grey-blue background for contact info */
+            padding: 15px;
+            border-radius: 5px;
+            color: #316A8F; /* Matching text color */
+            margin-top: 20px;
+        }
+        .video-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+        iframe {
+            width: 100%; /* Responsive video width */
+            height: 315px; /* Fixed height */
+            border: 0;
+        }
+        h2 {
+            color: #316A8F; /* Heading color */
+        }
+        ul {
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Logo at the top -->
+    <img src="RWA_Logo.jpg" alt="Company Logo" class="logo">
+
+    <!-- Main content container -->
+    <div class="container">
+        <!-- About Us Section -->
+        <div class="content-section">
+            <h2>About Us</h2>
+            <p>
+                At <strong>Real World Academy</strong>, we are redefining education by bridging the gap between academics and real-world experience. Designed by Ivy League graduates and industry experts with backgrounds in venture capital, tech investing, and global tech giants like Apple and Meta, our programs provide students with hands-on learning opportunities in technology, entrepreneurship, and innovation.
+            </p>
+            <p>
+                Each program focuses on high-impact fields such as Artificial Intelligence, FinTech, and E-commerce, offering students the opportunity to explore cutting-edge industries through activities like startup visits, guest speaker sessions, and team-based business pitch challenges.
+            </p>
+        </div>
+
+        <!-- Why Choose Us Section -->
+        <div class="content-section">
+            <h2>Why Choose Real World Academy?</h2>
+            <ul>
+                <li>Gain insights from experts actively shaping the tech landscape.</li>
+                <li>Participate in curated site visits to leading companies and innovation hubs.</li>
+                <li>Develop critical thinking, creativity, and entrepreneurial skills.</li>
+                <li>Elevate future college application profile with real-world experiences.</li>
+            </ul>
+            <p><strong>Explore. Innovate. Lead.</strong></p>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="contact-info">
+            <h3>Contact Us</h3>
+            <p>Email: info@therealworldacademy.com</p>
+            <p>Phone (WhatsApp): +971 58 665 8358</p> 
+        </div>
+
+        <!-- Embedded YouTube Video -->
+        <div class="video-container">
+            <h3>Listen From Our Past Students</h3>
+            <iframe 
+                src="https://www.youtube.com/embed/ljcKar7_zQQ" 
+                title="YouTube video player" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+</body>
+</html>
