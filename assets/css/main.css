@@ -1215,10 +1215,13 @@ input[type="radio"] + label:before {
   border-radius: 0.375em;
   border: 0;
   display: inline-block;
-  position: relative; }
+  position: relative;width: 300px; /* Set a fixed width */
+  height: auto; /* Maintain aspect ratio */ }
   .image img {
     border-radius: 0.375em;
-    display: block; }
+    display: block; 
+    width: 100%; /* Fit within the container */
+    height: auto; /* Maintain aspect ratio */}
   .image.left, .image.right {
     max-width: 40%; }
     .image.left img, .image.right img {
@@ -2137,7 +2140,8 @@ button,
     flex-shrink: 0;
     display: block;
     margin: 0 0 2em 4em;
-    width: 50%; }
+    width: 50%;
+    height: auto; }
     #banner .image img {
       height: 100%;
       -moz-object-fit: cover;
@@ -2148,7 +2152,8 @@ button,
       -webkit-object-position: center;
       -ms-object-position: center;
       object-position: center;
-      width: 100%; }
+      width: 100%;
+      height: auto; }
   @media screen and (orientation: portrait) {
     #banner {
       -moz-flex-direction: column-reverse;
