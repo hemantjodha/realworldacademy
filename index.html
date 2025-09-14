@@ -143,193 +143,99 @@ Designed for professionals, AI enthusiasts, and business owners.">
 </style>
 <!-- Mobile overrides: start -->
 <style>
-  /* MOBILE FIXES — paste entire block here */
-  @media (max-width: 768px) {
-    /* 1. Navbar: stack and center */
-    nav, .framer-K7H45, .framer-cwkf8b, .framer-v-cwkf8b {
-      display: flex !important;
-      flex-direction: column !important;
-      align-items: center !important;
-      gap: 8px !important;
-      padding: 8px 12px !important;
-    }
-    nav a, .framer-1w67ycn, .framer-1ce71uz {
-      display: block !important;
-      margin: 4px 0 !important;
-      font-size: 16px !important;
-      white-space: normal !important;
-    }
-
-    /* 2. Scale down large headings */
-    h1, .framer-1ce71uz h1, .framer-1ce71uz .framer-text {
-      font-size: 28px !important;
-      line-height: 36px !important;
-    }
-    h2, .framer-1hmwxcj h2, .framer-1hmwxcj .framer-text {
-      font-size: 22px !important;
-      line-height: 30px !important;
-    }
-
-    /* 3. Force columns to stack vertically (Program Dates / Metrics) */
-    .framer-1i0j45m, .framer-15mwc2b, .framer-1pcsvq, .program-dates, .framer-columns {
-      display: flex !important;
-      flex-direction: column !important;
-      gap: 16px !important;
-      padding-left: 16px !important;
-      padding-right: 16px !important;
-    }
-    .framer-1i0j45m > div, .framer-15mwc2b > div, .program-dates > div {
-      width: 100% !important;
-      max-width: 100% !important;
-    }
-
-    /* 4. Make logos grid responsive */
-    .framer-nan1a8, .logos-grid, .framer-lzla90 {
-      display: grid !important;
-      grid-template-columns: repeat(2, 1fr) !important;
-      gap: 12px !important;
-      justify-items: center !important;
-      align-items: center !important;
-      padding-left: 16px !important;
-      padding-right: 16px !important;
-    }
-    .framer-nan1a8 img, .logos-grid img {
-      max-width: 80% !important;
-      height: auto !important;
-      object-fit: contain !important;
-    }
-
-    /* 5. Footer: center and avoid squashing */
-    footer, .framer-footer, .framer-1f1fu3y {
-      display: flex !important;
-      flex-direction: column !important;
-      align-items: center !important;
-      text-align: center !important;
-      gap: 8px !important;
-      padding: 24px 16px !important;
-    }
-    footer img, .framer-footer img {
-      max-width: 160px !important;
-      height: auto !important;
-    }
-
-    /* 6. Generic fixes */
-    img { max-width: 100% !important; height: auto !important; display: block !important; }
-    .framer-1pa1ld7, .framer-1sw01b1, .framer-1y72486 { padding-left: 16px !important; padding-right: 16px !important; }
-    /* hide heavy decorative elements that cause overflow */
-    .framer-1arw0zu, .framer-1pf4fze-container, .framer-17wjhkq { display: none !important; }
-    /* larger tappable buttons */
-    button, .button-like, .framer-button { min-height: 44px !important; padding: 12px 16px !important; font-size: 16px !important; }
-
-    /* safeguard: prevent horizontal scroll */
-    html, body { overflow-x: hidden; overflow-y: auto !important; -webkit-overflow-scrolling: touch; }
-
-    /* Hide Benefits section (Traditional vs AI) on mobile */
-@media (max-width: 768px) {
-  #benefitsgrid {
-    display: none !important;
-  }
-}
-/* ---------- Add this to the end of your existing mobile override <style> ---------- */
-/* Scope: mobile phones only */
+/* Minimal safe mobile fixes — conservative, non-destructive */
 @media (max-width: 768px) {
 
-  /* 0) Make page scroll reliably on iOS/Android */
-  html, body, #__framer-root, .framer-8lsgB {
+  /* Restore sane scrolling behavior (allow vertical scroll) */
+  html, body, #__framer-root {
     overflow-x: hidden !important;
     overflow-y: auto !important;
     -webkit-overflow-scrolling: touch !important;
-    touch-action: pan-y !important; /* prefer vertical pan */
+    touch-action: pan-y !important;
   }
 
-  /* 1) Nav & logo: stack and avoid overlap */
-  /* target both semantic nav and framer exported header containers */
-  nav,
-  .framer-header,
-  .framer-1gyaur3,
-  .framer-1f1fu3y,
-  .framer-tlgopw,
-  .framer-6awnb8 {
-    position: static !important;
+  /* NAV / HEADER: make compact and non-overlapping */
+  nav, header, .framer-header, .framer-1vcg3vu, .framer-kxbvym {
+    position: relative !important;
     display: flex !important;
-    flex-direction: column !important;
+    flex-direction: row !important;
     align-items: center !important;
-    justify-content: center !important;
-    gap: 6px !important;
+    justify-content: space-between !important;
+    gap: 8px !important;
+    padding: 8px 14px !important;
     width: 100% !important;
-    padding: 10px 16px !important;
+    background: transparent !important;
+    z-index: 1200 !important;
     pointer-events: auto !important;
-    z-index: 999 !important;
-    background: rgba(255,255,255,0.98) !important; /* keep nav readable */
-    -webkit-backdrop-filter: none !important;
-            backdrop-filter: none !important;
   }
-  /* Reduce logo text size so it doesn't collide */
-  .framer-text[style*="Real World Academy"],
+
+  /* Reduce logo/title size so it fits the nav */
   .framer-kxbvym .framer-text,
-  .framer-1vcg3vu .framer-text {
+  .framer-1vcg3vu .framer-text,
+  .framer-text[style*="Real World Academy"] {
     font-size: 18px !important;
     line-height: 22px !important;
     white-space: nowrap !important;
     overflow: visible !important;
-  }
-  /* Navigation links: on separate line */
-  nav a, .framer-12g2h0i .framer-text {
-    white-space: normal !important;
-    font-size: 15px !important;
-    margin: 4px 6px !important;
+    text-overflow: clip !important;
   }
 
-  /* 2) Headings: scale down */
+  /* Nav links: wrap to next line rather than overlap the logo */
+  nav a, .framer-12g2h0i .framer-text {
+    font-size: 14px !important;
+    white-space: normal !important;
+    margin: 0 6px !important;
+  }
+
+  /* HEADINGS and text: scale down moderately */
   h1, .framer-lygwgd h1, .framer-text.framer-styles-preset-7ipci8 {
     font-size: 30px !important;
-    line-height: 38px !important;
+    line-height: 36px !important;
+    word-break: break-word !important;
   }
   h2, .framer-text.framer-styles-preset-5u8n9p {
-    font-size: 22px !important;
-    line-height: 30px !important;
+    font-size: 20px !important;
+    line-height: 28px !important;
   }
   p, .framer-text {
     font-size: 15px !important;
     line-height: 1.5 !important;
   }
 
-  /* 3) Cards & grid items: force one-column stack to prevent horizontal overflow */
-  /* These class names match exported Framer containers used for the cards */
-  .framer-AyJ3H,
-  .framer-1r28h08-container,
-  .framer-1p7trrd,
-  .framer-1pcf9ll,
-  .framer-1lj3mif,
-  .framer-1j1myv5,
-  .framer-1pz2etw,
-  #benefitsgrid,
-  .framer-ks2cct,
-  .framer-1pz2etw > div,
-  .framer-1pcf9ll > div,
-  .framer-1YJYt {
+  /* ALL CARDS / GRIDS: always stack into one column on mobile */
+@media (max-width: 768px) {
+  [class*="framer-"] {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  /* any grid or flex container becomes column */
+  [class*="framer-"] {
     display: flex !important;
     flex-direction: column !important;
-    width: 100% !important;
-    max-width: 100% !important;
+    flex-wrap: nowrap !important;
+    gap: 16px !important;
     box-sizing: border-box !important;
     padding-left: 16px !important;
     padding-right: 16px !important;
-    gap: 16px !important;
   }
+}
+
   .framer-1YJYt, .framer-1p7trrd, .framer-1pcf9ll {
     border-radius: 12px !important;
     overflow: visible !important;
+    transform: none !important;
   }
-  /* Ensure image/logo inside cards don't force width beyond viewport */
+
   .framer-ydwj30 img, .framer-1pcf9ll img, .framer-1pcf9ll [data-framer-background-image-wrapper] img {
     max-width: 100% !important;
     width: auto !important;
     height: auto !important;
     object-fit: contain !important;
+    display: block !important;
   }
 
-  /* 4) Hide large decorative / gradient layers that cause pointer capture or excess width */
+  /* Hide the vertical large decorative bars and other heavy visuals that cause overflow */
   .framer-1arw0zu,
   .framer-17wjhkq,
   .framer-pf4fze-container,
@@ -338,43 +244,42 @@ Designed for professionals, AI enthusiasts, and business owners.">
   .framer-gradient,
   .framer-1arw0zu[data-framer-name="Gradient mask"] {
     display: none !important;
-    pointer-events: none !important;
-    opacity: 0 !important;
     height: 0 !important;
     width: 0 !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
   }
 
-  /* 5) Remove any full-screen fixed overlays used for desktop (they can trap touch scroll) */
-  [style*="position: fixed"][style*="top: 0"], /* generic */
-  .framer-overlay,
-  .framer-editorbar,
-  .framer-1pf4fze-container {
-    position: static !important;
+  /* Ensure footer/logo area does not squash */
+  footer, .framer-footer {
+    display: block !important;
+    text-align: center !important;
+    padding: 20px 16px !important;
+  }
+  footer img, .framer-footer img {
+    max-width: 160px !important;
     height: auto !important;
-    max-height: none !important;
-    overflow: visible !important;
-    pointer-events: auto !important;
   }
 
-  /* 6) Buttons and tappables: make them comfortably sized */
-  button, .framer-button, .button-like, .framer-1YJYt {
-    min-height: 44px !important;
-    padding: 12px 16px !important;
-    font-size: 16px !important;
-  }
-
-  /* 7) Final safety: prevent horizontal scroll from unexpected children */
+  /* Safety guard: prevent any direct children from extending beyond viewport */
   body > * {
     max-width: 100vw !important;
     box-sizing: border-box !important;
   }
-  /* Also guard against oversized absolute children */
-  [style*="left:"] , [style*="right:"] , [style*="width: 200%"] {
-    max-width: 100% !important;
+
+  /* Tappable targets comfortable size */
+  button, .framer-button, .button-like {
+    min-height: 44px !important;
+    padding: 10px 14px !important;
+    font-size: 15px !important;
+  }
+  /* Hide Benefits section (Traditional vs AI) on mobile */
+@media (max-width: 768px) {
+  #benefitsgrid {
+    display: none !important;
   }
 }
-/* ---------- End mobile fixes ---------- */
-  }
+}
 </style>
 <!-- Mobile overrides: end -->
 </head>
@@ -528,22 +433,5 @@ Designed for professionals, AI enthusiasts, and business owners.">
 
 
 <iframe id="__framer-editorbar" src="./Real World Academy_files/edit.html" aria-hidden="true" allow="autoplay" tabindex="-1" class="status_hidden"></iframe>
-<script>
-  // Mobile scroll unblock helper
-  (function(){
-    try {
-      document.documentElement.style.overflowY = 'auto';
-      document.body.style.overflowY = 'auto';
-      document.documentElement.style.touchAction = 'pan-y';
-      // remove any weird inline style that sets height:100vh locking scrolling
-      document.querySelectorAll('[style]').forEach(el=>{
-        const s = el.getAttribute('style') || '';
-        if(/\bheight:\s*100vh\b/i.test(s) || /\boverflow:\s*hidden\b/i.test(s)) {
-          el.style.height = 'auto';
-          el.style.overflow = 'visible';
-        }
-      });
-    } catch(e){}
-  })();
-</script>
+
 </body></html>
