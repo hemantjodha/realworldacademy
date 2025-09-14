@@ -140,101 +140,12 @@ Designed for professionals, AI enthusiasts, and business owners.">
 #__framer-editorbar.status_measuring {
     clip-path: unset;
 }
-</style>
-<!-- RWA: minimal mobile fixes (inserted by helper) -->
-<style>
 @media (max-width: 768px) {
-
-  /* Prevent horizontal overflow */
-  html, body { overflow-x: hidden !important; -webkit-overflow-scrolling: touch !important; }
-  body > * { max-width: 100vw !important; box-sizing: border-box !important; }
-
-  /* Header: show only the logo/title, hide nav links (target by link text fallback via attribute selectors if possible) */
-  /* Hide common nav link containers (Framer class guesses) */
-  nav .framer-nav, nav .framer-12g2h0i, .framer-6awnb8, .framer-1w67ycn, .framer-1ce71uz { display: none !important; visibility: hidden !important; pointer-events: none !important; }
-
-  /* Ensure logo/title containers are visible and centered */
-  .framer-kxbvym, .framer-1vcg3vu, header, .site-logo, .framer-header {
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    width: 100% !important;
-    padding: 8px 12px !important;
-    visibility: visible !important;
+  [data-framer-name="Title"] {
+    display: none !important;
   }
-  .framer-kxbvym .framer-text, .framer-1vcg3vu .framer-text, header .framer-text {
-    display: block !important;
-    font-size: 20px !important;
-    line-height: 24px !important;
-    white-space: nowrap !important;
-    text-align: center !important;
-  }
-
-  /* Hide large decorative vertical bars that cause overflow */
-  [class*="framer"][class*="gradient"], [class*="vertical"], .framer-gradient, .framer-1arw0zu, .framer-17wjhkq { display: none !important; width: 0 !important; height: 0 !important; opacity: 0 !important; pointer-events: none !important; }
-
-  /* Stack card grids into single column to avoid two-column overflow */
-  .framer-AyJ3H, .framer-1pcf9ll, .framer-1p7trrd, #benefitsgrid, #benefits {
-    display: block !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    padding-left: 16px !important; padding-right: 16px !important;
-  }
-
-  /* Make iframes responsive */
-  iframe, .embed-responsive, .framer-video { width: 100% !important; max-width: 100% !important; height: auto !important; }
-
-  /* Prevent full-screen fixed overlays from blocking scroll */
-  [style*="position: fixed"], .framer-overlay, .full-screen-modal { position: static !important; height: auto !important; max-height: none !important; overflow: visible !important; pointer-events: auto !important; }
-
-  /* Fix text wrapping that showed up as vertical text */
-  .framer-text, p, h1, h2, h3 { white-space: normal !important; word-break: break-word !important; hyphens: auto !important; transform: none !important; letter-spacing: normal !important; }
-
-  /* Keep buttons tappable */
-  button, .framer-button { min-height: 44px !important; padding: 10px 14px !important; font-size: 15px !important; }
-@media (max-width: 768px) {
-    /* Scope to the header/nav area only */
-    header, header * { box-sizing: border-box; }
-
-    /* Hide typical nav link containers (only inside header) */
-    header nav,
-    header .nav,
-    header .menu,
-    header .framer-nav,
-    header .framer-12g2h0i,
-    header .framer-1w67ycn,
-    header .framer-6awnb8 {
-      display: none !important;
-      visibility: hidden !important;
-      pointer-events: none !important;
-    }
-
-    /* Ensure the logo/title remains visible and centered */
-    header .logo,
-    header .site-logo,
-    header .framer-kxbvym,
-    header .framer-1vcg3vu,
-    header .framer-text {
-      display: flex !important;
-      visibility: visible !important;
-      opacity: 1 !important;
-      justify-content: center !important;
-      align-items: center !important;
-      width: 100% !important;
-      height: auto !important;
-      padding: 8px 12px !important;
-      pointer-events: auto !important;
-    }
-
-    /* If the logo is an <img>, make sure it fits */
-    header img.logo, header img.site-logo, header img {
-      max-width: 70% !important;
-      height: auto !important;
-    }
-}
 }
 </style>
-<!-- End RWA: minimal mobile fixes -->
 
 </head>
 <body>
@@ -372,63 +283,5 @@ Designed for professionals, AI enthusiasts, and business owners.">
 
 
 <iframe id="__framer-editorbar" src="./Real World Academy_files/edit.html" aria-hidden="true" allow="autoplay" tabindex="-1" class="status_hidden"></iframe>
-<!-- MOBILE: hide specific nav links by text (paste immediately before </body>) -->
-<script>
-(function () {
-  var MENU_TEXTS = ['About', 'Who Should Join', 'Live Courses'];
 
-  function isMobile() {
-    return window.innerWidth <= 768;
-  }
-
-  // Hide only anchors that are descendants of header/nav whose text matches
-  function hideHeaderNavItems() {
-    // restore previously hidden items first
-    document.querySelectorAll('[data-rwa-hidden-by-script]').forEach(function (el) {
-      el.style.display = el.__rwa_orig_display || '';
-      el.removeAttribute('data-rwa-hidden-by-script');
-      delete el.__rwa_orig_display;
-    });
-
-    if (!isMobile()) return;
-
-    // prefer header > nav, else first nav in document
-    var header = document.querySelector('header');
-    var nav = header ? (header.querySelector('nav') || header) : (document.querySelector('nav') || document.body);
-
-    if (!nav) return;
-
-    // Look for anchors or buttons inside nav and hide ones with matching text
-    var candidates = nav.querySelectorAll('a, button, span');
-    candidates.forEach(function (el) {
-      var txt = (el.textContent || '').trim();
-      if (!txt) return;
-      for (var i = 0; i < MENU_TEXTS.length; i++) {
-        var t = MENU_TEXTS[i];
-        if (txt === t || txt.indexOf(t) !== -1) {
-          // only hide the anchor or its closest parent link wrapper, not entire header
-          var toHide = el;
-          // If the anchor is inside an li or wrapper, hide the wrapper instead (keeps layout tidy)
-          var wrapper = el.closest('li, .nav-item, .framer-nav-item, .menu-item');
-          if (wrapper) toHide = wrapper;
-          // save original display so we can restore on resize
-          toHide.__rwa_orig_display = toHide.style.display || '';
-          toHide.style.display = 'none';
-          toHide.setAttribute('data-rwa-hidden-by-script', '1');
-          break;
-        }
-      }
-    });
-  }
-
-  var t;
-  window.addEventListener('load', hideHeaderNavItems);
-  window.addEventListener('orientationchange', function () { setTimeout(hideHeaderNavItems, 220); });
-  window.addEventListener('resize', function () {
-    clearTimeout(t);
-    t = setTimeout(hideHeaderNavItems, 180);
-  });
-})();
-</script>
-<!-- END MOBILE: hide specific nav links by text -->
 </body></html>
