@@ -143,142 +143,41 @@ Designed for professionals, AI enthusiasts, and business owners.">
 </style>
 <!-- Mobile overrides: start -->
 <style>
-/* Minimal safe mobile fixes — conservative, non-destructive */
+/* Very conservative mobile fixes: minimal, safe */
 @media (max-width: 768px) {
+  html, body { -webkit-text-size-adjust: 100%; }
 
-  /* Restore sane scrolling behavior (allow vertical scroll) */
-  html, body, #__framer-root {
-    overflow-x: hidden !important;
-    overflow-y: auto !important;
-    -webkit-overflow-scrolling: touch !important;
-    touch-action: pan-y !important;
-  }
-
-  /* NAV / HEADER: make compact and non-overlapping */
-  nav, header, .framer-header, .framer-1vcg3vu, .framer-kxbvym {
-    position: relative !important;
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    gap: 8px !important;
-    padding: 8px 14px !important;
-    width: 100% !important;
-    background: transparent !important;
-    z-index: 1200 !important;
-    pointer-events: auto !important;
+  /* Ensure no element forces horizontal scroll */
+  body > * { 
+    max-width: 100vw !important; 
+    box-sizing: border-box !important; 
   }
 
-  /* Reduce logo/title size so it fits the nav */
-  .framer-kxbvym .framer-text,
-  .framer-1vcg3vu .framer-text,
-  .framer-text[style*="Real World Academy"] {
-    font-size: 18px !important;
-    line-height: 22px !important;
-    white-space: nowrap !important;
-    overflow: visible !important;
-    text-overflow: clip !important;
-  }
+  /* Reduce main headings modestly */
+  h1 { font-size: 30px !important; line-height: 38px !important; }
+  h2 { font-size: 20px !important; line-height: 28px !important; }
 
-  /* Nav links: wrap to next line rather than overlap the logo */
-  nav a, .framer-12g2h0i .framer-text {
-    font-size: 14px !important;
-    white-space: normal !important;
-    margin: 0 6px !important;
-  }
-
-  /* HEADINGS and text: scale down moderately */
-  h1, .framer-lygwgd h1, .framer-text.framer-styles-preset-7ipci8 {
-    font-size: 30px !important;
-    line-height: 36px !important;
-    word-break: break-word !important;
-  }
-  h2, .framer-text.framer-styles-preset-5u8n9p {
-    font-size: 20px !important;
-    line-height: 28px !important;
-  }
-  p, .framer-text {
-    font-size: 15px !important;
-    line-height: 1.5 !important;
-  }
-
-  /* ALL CARDS / GRIDS: always stack into one column on mobile */
-@media (max-width: 768px) {
-  [class*="framer-"] {
-    max-width: 100% !important;
-    width: 100% !important;
-  }
-
-  /* any grid or flex container becomes column */
-  [class*="framer-"] {
-    display: flex !important;
-    flex-direction: column !important;
-    flex-wrap: nowrap !important;
-    gap: 16px !important;
-    box-sizing: border-box !important;
-    padding-left: 16px !important;
+  /* Make main containers flow vertically */
+  #benefitsgrid, 
+  .framer-1pcf9ll, 
+  .framer-1p7trrd {
+    display: block !important; 
+    width: 100% !important; 
+    max-width: 100% !important; 
+    padding-left: 16px !important; 
     padding-right: 16px !important;
   }
-}
 
-  .framer-1YJYt, .framer-1p7trrd, .framer-1pcf9ll {
-    border-radius: 12px !important;
-    overflow: visible !important;
-    transform: none !important;
+  /* Hide large decorative vertical bars */
+  .framer-1arw0zu, 
+  .framer-17wjhkq, 
+  .framer-gradient { 
+    display: none !important; 
+    height: 0 !important; 
+    width: 0 !important; 
+    opacity: 0 !important; 
+    pointer-events: none !important; 
   }
-
-  .framer-ydwj30 img, .framer-1pcf9ll img, .framer-1pcf9ll [data-framer-background-image-wrapper] img {
-    max-width: 100% !important;
-    width: auto !important;
-    height: auto !important;
-    object-fit: contain !important;
-    display: block !important;
-  }
-
-  /* Hide the vertical large decorative bars and other heavy visuals that cause overflow */
-  .framer-1arw0zu,
-  .framer-17wjhkq,
-  .framer-pf4fze-container,
-  .framer-rcenk9,
-  .framer-1mqn5gk,
-  .framer-gradient,
-  .framer-1arw0zu[data-framer-name="Gradient mask"] {
-    display: none !important;
-    height: 0 !important;
-    width: 0 !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
-  }
-
-  /* Ensure footer/logo area does not squash */
-  footer, .framer-footer {
-    display: block !important;
-    text-align: center !important;
-    padding: 20px 16px !important;
-  }
-  footer img, .framer-footer img {
-    max-width: 160px !important;
-    height: auto !important;
-  }
-
-  /* Safety guard: prevent any direct children from extending beyond viewport */
-  body > * {
-    max-width: 100vw !important;
-    box-sizing: border-box !important;
-  }
-
-  /* Tappable targets comfortable size */
-  button, .framer-button, .button-like {
-    min-height: 44px !important;
-    padding: 10px 14px !important;
-    font-size: 15px !important;
-  }
-  /* Hide Benefits section (Traditional vs AI) on mobile */
-@media (max-width: 768px) {
-  #benefitsgrid {
-    display: none !important;
-  }
-}
 }
 </style>
 <!-- Mobile overrides: end -->
