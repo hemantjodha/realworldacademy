@@ -247,9 +247,120 @@ Designed for professionals, AI enthusiasts, and business owners.">
       height: auto !important;
     }
   } /* end media */
+  <!-- START: show only logo on mobile (fix for accidental hide) -->
+<style>
+@media (max-width: 768px) {
+  /* Ensure logo container is visible and centered */
+  .framer-kxbvym,
+  .framer-1vcg3vu,
+  .site-logo,
+  header .logo,
+  header .framer-text {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 auto !important;
+    padding: 6px 12px !important;
+    z-index: 1500 !important;
+  }
+
+  /* If logo text was hidden by a rule, force it visible and size it */
+  .framer-kxbvym .framer-text,
+  .framer-1vcg3vu .framer-text,
+  header .framer-text {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    font-size: 20px !important;
+    line-height: 24px !important;
+    color: inherit !important;
+    white-space: nowrap !important;
+    text-align: center !important;
+  }
+
+  /* Keep all nav link containers and decorative pieces hidden */
+  nav a,
+  .framer-12g2h0i,
+  .framer-6awnb8,
+  .framer-tlgopw,
+  .framer-6knfao,
+  .framer-1w67ycn,
+  .framer-1ce71uz {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+
+  /* Prevent any parent from clipping the logo */
+  header, nav, .framer-header {
+    overflow: visible !important;
+  }
+}
+</style>
+<!-- END: show only logo on mobile -->
 </style>
 <!-- ========== End Mobile / UX fixes ========== -->
 </head>
+<!-- HIDE TOP NAV LINKS ON SMALL SCREENS: insert just BEFORE </body> (≈ line 330-335) -->
+<script>
+(function () {
+  // text labels to hide on mobile (exact text match or substring)
+  var MENU_TEXTS = ['About', 'Who Should Join', 'Live Courses'];
+
+  function shouldHide() {
+    return window.innerWidth <= 768; // mobile / small tablet breakpoint
+  }
+
+  // Hide only elements that match the text labels and are visible.
+  function applyHide() {
+    // Restore everything previously hidden first (so resize toggles correctly)
+    document.querySelectorAll('[data-rwa-hide-mobile]').forEach(function (el) {
+      el.style.display = el.__rwa_originalDisplay || '';
+      el.removeAttribute('data-rwa-hide-mobile');
+      delete el.__rwa_originalDisplay;
+    });
+
+    if (!shouldHide()) return; // nothing to hide on larger screens
+
+    // Search limited set of elements to avoid over-hiding
+    var candidates = Array.from(document.querySelectorAll('nav a, nav button, header a, header button, .framer-1bzd7at-container a, .framer-1bzd7at-container button, .framer-1bzd7at-container span, .framer-1bzd7at-container div'));
+
+    // If nav/header specific selectors above don't find anything, widen search a bit:
+    if (candidates.length === 0) {
+      candidates = Array.from(document.querySelectorAll('a, button, span, div'));
+    }
+
+    candidates.forEach(function (el) {
+      var txt = (el.textContent || '').trim();
+      if (!txt) return;
+      for (var i = 0; i < MENU_TEXTS.length; i++) {
+        var t = MENU_TEXTS[i];
+        if (txt === t || txt.indexOf(t) !== -1) {
+          // preserve original display so we can restore on resize
+          el.__rwa_originalDisplay = el.style.display || '';
+          el.setAttribute('data-rwa-hide-mobile', '1');
+          el.style.display = 'none';
+          break;
+        }
+      }
+    });
+  }
+
+  // Run on load and on resize (with tiny debounce)
+  var resizeTimer;
+  window.addEventListener('load', applyHide);
+  window.addEventListener('orientationchange', function () { setTimeout(applyHide, 250); });
+  window.addEventListener('resize', function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(applyHide, 150);
+  });
+})();
+</script>
+<!-- END HIDE TOP NAV LINKS ON SMALL SCREENS -->
 <body>
     <script async="" src="./Real World Academy_files/script" data-fid="db82800a08aed5e750c0d196308d579cf64e0fdbdf1d6052d33f757d29680dcd" data-no-nt=""></script>
     <!-- Start of bodyStart -->
